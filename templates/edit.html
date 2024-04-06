@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Lista de tareas{% endblock %}
+{% block content %}
+
+<form id="new-task-form" action="/edit/{{ tarea.id }}" method="POST">
+    <input 
+        type="text" 
+        name="tarea_text" 
+        id="new-task-input" 
+        placeholder="Que vas a hacer hoy?" 
+        value="{{ tarea.tarea_text }}"/>
+    <input 
+        type="submit"
+        id="new-task-submit" 
+        value="Agregar tarea" />
+</form>
+
+{% endblock %}

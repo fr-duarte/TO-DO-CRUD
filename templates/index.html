@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Lista de tareas{% endblock %}
+{% block content %}
+
+<header>
+	<h1>Tareas</h1>
+	<form id="new-task-form" action="/add_task" method="POST">
+		<input 
+			type="text" 
+			name="new-task-input" 
+			id="new-task-input" 
+			placeholder="Que vas a hacer hoy?" />
+		<input 
+			type="submit"
+			id="new-task-submit" 
+			value="Agregar tarea" />
+	</form>
+</header>
+<main>
+	<section class="task-list">
+		<h2>Hoy</h2>
+
+		{% for tk in tareas %}
+		<div id="tasks">
+			<h5>{{ tk.tarea_text }}</h5>
+		</div>
+		<div class="actions">
+			<a href="{{ url_for('task.editTask', id=tk.id) }}" class="edit">Edit</a>
+			<a href="{{ url_for('task.delete', id=tk.id) }}" class="delete">Delete</a>
+		</div>
+		{% endfor %}
+	</section>
+	
+</main>
+
+{% endblock %}
+
+
+<!-- <div class="task">
+			<div class="content">
+				<input 
+					type="text" 
+					class="text" 
+					value="{{ tk.tarea_text }}"
+					readonly>
+			</div>
+			<div class="actions">
+				<button class="edit">Edit</button>
+				<button class="delete">Delete</button>
+			</div>
+		</div> -->
